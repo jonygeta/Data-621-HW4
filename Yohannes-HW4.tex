@@ -1,0 +1,3129 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={DATA 621 Homework 4},
+            pdfauthor={Crithical Thinking Group 2},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{DATA 621 Homework 4}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Crithical Thinking Group 2}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+    \date{}
+    \predate{}\postdate{}
+  
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+\begin{document}
+\maketitle
+
+\subsection{Abstract}\label{abstract}
+
+The main purpose of this homework is building two models, (a binary
+regression model to predict whether a vehicle will be involved in a
+crash and a linear regression model to predict possible payout).
+
+Binary model generated fairly good results. Due to the accuracy of
+aproximately 80\% the binary model has generated a better result instead
+of gussing the outcome. We woould like to make a note here that the
+accuracy level may not be high in the real world due to the complexity
+of car insurance business as the reasons for claim are diverse .But we
+belive that the results of this project are reasonable to achive the
+required model.
+
+Based on our observation , linear model have problems due to the
+significant predictor of depending on the Blue Book Value for payment
+purposes. However, with \(R^2\) value of 0.005, this model barely
+explains any variance in the outcome variable. Adding other variables
+that should influence the payout amount, such as \texttt{CAR\_AGE}, did
+not have a significant effect.
+
+The model was created using only onservations for vehicles involved in a
+crash (\texttt{TARGET\_FLAG}==1). It is possible to create a linear
+regression model on all data, without this limitation. \(R^2\) is
+significantly improved. In some tests, \(R^2\) was about 0.27. From the
+obervation we can undertsnad that the \$0 payout (vehicles not involved
+in a crash) does not help fit the actual payouts.
+
+Looking at the relationship between Blue Book value and payout amount,
+there is a high amount of variability. There are many observations with
+low value, but high payout which might have been caused by missing of
+some critical data which would have enabled to accurately predict
+payouts . We should not also ignore the importance of variables which
+will dramatically influence the payout amount . This varivales are : the
+intesity of the crash, the number of vehicles involved on th crash and
+the assesment of whethere the vehicle was totaled or not . \#\# Data
+Exploration
+
+The data set includes 8,161 observations with 24 variables.
+
+\paragraph{Summary of Variables}\label{summary-of-variables}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.16\columnwidth}\raggedright\strut
+Variable\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright\strut
+Type\strut
+\end{minipage} & \begin{minipage}[b]{0.28\columnwidth}\raggedright\strut
+Description\strut
+\end{minipage} & \begin{minipage}[b]{0.28\columnwidth}\raggedright\strut
+Comments\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+KIDSDRIV\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Integer\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+No of children driving.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Ranges from 0 to 4.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+AGE\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Integer\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Age of driver.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Ranges from 16 to 81. Contains 6 NAs.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+HOMEKIDS\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Integer\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+No of children at home.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Ranges from 0 to 5.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+YOJ\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Integer\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Years on the job.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Ranges from 0 to 23. Contains 454 NAs (about 5.56\% of all
+observations).\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+INCOME\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Numeric\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Income.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Ranges from \$0 to \$367,000. Contains 445 NAs (about 5.45\% of all
+observations). Was converted to numeric by removing dollar signs and
+commas.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+PARENT1\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Factor\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Single parent flag.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Values: No, Yes.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+HOME\_VAL\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Numeric\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Home value.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Ranges from \$0 to \$885,000. Contains 464 NAs (about 5.69\% of all
+observations). Was converted to numeric by removing dollar signs and
+commas.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+MSTATUS\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Factor\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Married flag.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Values: Yes, No.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+SEX\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Factor\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Gender.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Values: M, F.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+EDUCATION\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Factor\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Maximum education level.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Values: \textless{}High School, High School, Bachelors, Masters,
+PhD.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+JOB\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Factor\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Job category.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Values: {[}Blank{]}, Clerical, Doctor, Home Maker, Lawyer, Manager,
+Professional, Student, Blue Collar.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+TRAVTIME\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Integer\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Distance to work.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Ranges from 5 to 142.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+CAR\_USE\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Factor\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Vehicle use.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Values: Commercial, Private.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+BLUEBOOK\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Numeric\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Vehicle value.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Ranges from \$1,500 to \$69,740. Was converted to numeric by removing
+dollar signs and commas.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+TIF\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Integer\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Time in force.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Ranges from 1 to 25.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+CAR\_TYPE\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Factor\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Vehicle type.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Values: Minivan, Panel Truck, Pickup, Sports Car, Van, SUV.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+RED\_CAR\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Factor\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Red car flag.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Values: No, Yes\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+OLDCLAIM\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Numeric\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Total payout of claims.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Ranges from \$0 to \$57,040. Was converted to numeric by removing dollar
+signs and commas.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+CLM\_FREQ\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Integer\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+No of claims (past 5 years).\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Ranges from 0 to 5.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+REVOKED\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Factor\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Revoked license flag.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Values: No, Yes.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+MVR\_PTS\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Integer\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Motor vehicle record points.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Ranges from 0 to 13.\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+CAR\_AGE\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Integer\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Vehicle age.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Ranges from -3 to 28. Contains 510 NAs (about 6.25\% of all
+observations).\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.16\columnwidth}\raggedright\strut
+URBANICITY\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+Factor\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Home/work area.\strut
+\end{minipage} & \begin{minipage}[t]{0.28\columnwidth}\raggedright\strut
+Values: Urban, Rural.\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Observation of summary of numeric variables in a table .
+
+\begin{longtable}[]{@{}cccccccc@{}}
+\toprule
+\begin{minipage}[b]{0.11\columnwidth}\centering\strut
+Variable\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+Min\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+Median\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+Mean\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+SD\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+Max\strut
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\centering\strut
+Num of NAs\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Num of Zeros\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+KIDSDRIV\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0.1711\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0.5115\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+7180\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+AGE\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+16\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+45\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+44.79\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+8.628\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+81\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+6\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+HOMEKIDS\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0.7212\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1.116\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+5\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+5289\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+YOJ\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+11\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+10.5\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+4.092\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+23\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+454\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+625\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+INCOME\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+54028\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+61898\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+47573\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+367030\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+445\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+615\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+HOME\_VAL\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+161160\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+154867\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+129124\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+885282\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+464\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+2294\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+TRAVTIME\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+5\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+33\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+33.49\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+15.91\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+142\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+BLUEBOOK\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+1500\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+14440\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+15710\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+8420\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+69740\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+TIF\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+5.351\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+4.147\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+25\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+OLDCLAIM\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+4037\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+8777\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+57037\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+5009\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+CLM\_FREQ\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0.7986\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1.158\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+5\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+5009\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+MVR\_PTS\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1.696\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+2.147\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+13\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+3712\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+CAR\_AGE\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+-3\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+8\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+8.328\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+5.701\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+28\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+510\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+3\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+As we have obsrved from the above table, there are significant number of
+observations with value of 0 and there is a logical explanation that
+these observations are valid:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{KIDSDRIV} and \texttt{HOMEKIDS}: households without children
+\item
+  \texttt{YOJ} and \texttt{INCOME}: unemployed individuals
+\item
+  \texttt{HOME\_VAL}: renters
+\item
+  \texttt{OLDCLAIM}, \texttt{CLM\_FREQ} and \texttt{MVR\_PTS}: safe
+  drivers with no claims or DMV points
+\end{itemize}
+
+\paragraph{\texorpdfstring{Hangling
+\emph{NAs}}{Hangling NAs}}\label{hangling-nas}
+
+Several variables - \texttt{AGE}, \texttt{YOJ}, \texttt{INCOME},
+\texttt{HOME\_VAL}, \texttt{CAR\_AGE} - contained some \texttt{NA}
+values.
+
+By removing incomplete observation we have 6,041 observations which are
+suffient for the sake of our analysis .
+
+\paragraph{Additional Details}\label{additional-details}
+
+\begin{itemize}
+\tightlist
+\item
+  Boxplots and histograms were inspected for all variable in order to
+  see any anomalies.
+\item
+  Multiple values were prefixed with text `z\_', which was removed from
+  all observations. Affected variables are \texttt{MSTATUS},
+  \texttt{EDUCATION}, \texttt{JOB}, \texttt{CAR\_TYPE} and
+  \texttt{URBANICITY}.
+\item
+  Index column present in the data set has been removed.
+\item
+  Levels for \texttt{EDUCATION} have been re-ordered to follow the most
+  common order: \emph{\textless{}High School}, \emph{High School},
+  \emph{Bachelors}, \emph{Masters}, and \emph{PhD}.
+\item
+  Levels for \texttt{JOB} have been re-ordered to follow general order
+  from low-paying to high-paying occupations: \emph{Student}, \emph{Blue
+  Collar}, \emph{Home Maker}, \emph{Clerical}, \emph{Professional},
+  \emph{Manager}, \emph{Lawyer}, and \emph{Doctor}.
+\item
+  Counts of observations for possible values of \texttt{PARENT1}:
+\end{itemize}
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+No\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+Yes\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+5219\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+822\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Counts of observations for possible values of \texttt{MSTATUS}:
+\end{itemize}
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+Yes\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+No\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+3594\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+2447\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Counts of observations for possible values of \texttt{SEX}:
+\end{itemize}
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+M\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+F\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+2683\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+3358\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Counts of observations for possible values of \texttt{EDUCATION}:
+\end{itemize}
+
+\begin{longtable}[]{@{}ccccc@{}}
+\toprule
+\begin{minipage}[b]{0.18\columnwidth}\centering\strut
+\textless{}High School\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\centering\strut
+High School\strut
+\end{minipage} & \begin{minipage}[b]{0.14\columnwidth}\centering\strut
+Bachelors\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+Masters\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+PhD\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.18\columnwidth}\centering\strut
+955\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+1871\strut
+\end{minipage} & \begin{minipage}[t]{0.14\columnwidth}\centering\strut
+1739\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+1060\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+416\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Counts of observations for possible values of \texttt{JOB}:
+\end{itemize}
+
+\begin{longtable}[]{@{}cccccccc@{}}
+\toprule
+\begin{minipage}[b]{0.10\columnwidth}\centering\strut
+Student\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+Blue Collar\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\centering\strut
+Home Maker\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\centering\strut
+Clerical\strut
+\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering\strut
+Professional\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\centering\strut
+Manager\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+Lawyer\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+Doctor\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+537\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1476\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+484\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1030\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
+867\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+778\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+670\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+199\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Counts of observations for possible values of \texttt{CAR\_USE}:
+\end{itemize}
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+\begin{minipage}[b]{0.17\columnwidth}\centering\strut
+Commercial\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+Private\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.17\columnwidth}\centering\strut
+2040\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+4001\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Counts of observations for possible values of \texttt{CAR\_TYPE}:
+\end{itemize}
+
+\begin{longtable}[]{@{}cccccc@{}}
+\toprule
+\begin{minipage}[b]{0.12\columnwidth}\centering\strut
+Minivan\strut
+\end{minipage} & \begin{minipage}[b]{0.16\columnwidth}\centering\strut
+Panel Truck\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\centering\strut
+Pickup\strut
+\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\centering\strut
+Sports Car\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+Van\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+SUV\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+1699\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\centering\strut
+347\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1012\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\centering\strut
+714\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+488\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+1781\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Counts of observations for possible values of \texttt{RED\_CAR}:
+\end{itemize}
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+No\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+Yes\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+4350\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1691\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Counts of observations for possible values of \texttt{REVOKED}:
+\end{itemize}
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+No\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+Yes\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+5297\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+744\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Counts of observations for possible values of \texttt{URBANICITY}:
+\end{itemize}
+
+\begin{longtable}[]{@{}cc@{}}
+\toprule
+\begin{minipage}[b]{0.10\columnwidth}\centering\strut
+Urban\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\centering\strut
+Rural\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+4742\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1299\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Counts of observations for possible values of \texttt{KIDSDRIV}:
+\end{itemize}
+
+\begin{longtable}[]{@{}ccccc@{}}
+\toprule
+\begin{minipage}[b]{0.08\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+2\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+3\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+4\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+5309\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+473\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+207\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+50\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+2\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Counts of observations for possible values of \texttt{HOMEKIDS}
+\end{itemize}
+
+\begin{longtable}[]{@{}cccccc@{}}
+\toprule
+\begin{minipage}[b]{0.08\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+2\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+3\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+4\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+5\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+3872\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+667\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+837\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+525\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+129\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+11\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Counts of observations for possible values of \texttt{CLM\_FREQ}
+\end{itemize}
+
+\begin{longtable}[]{@{}cccccc@{}}
+\toprule
+\begin{minipage}[b]{0.08\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+2\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+3\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+4\strut
+\end{minipage} & \begin{minipage}[b]{0.07\columnwidth}\centering\strut
+5\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+3758\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+715\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+848\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+568\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+141\strut
+\end{minipage} & \begin{minipage}[t]{0.07\columnwidth}\centering\strut
+11\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\paragraph{\texorpdfstring{Target/Dependent Variable
+\texttt{TARGET\_FLAG}}{Target/Dependent Variable TARGET\_FLAG}}\label{targetdependent-variable-target_flag}
+
+To identify whether a vehicle was involved in a crash we have used
+target variable for the binary regression model representing a flag .
+There are 4,440 observation with \texttt{TARGET\_FLAG} value of 0 and
+1,601 observations with \texttt{TARGET\_FLAG} value of 1 making it about
+75/25 split, or more precisely there are \textbf{73.5\% of 0s and 26.5\%
+of 1s}.
+
+\paragraph{\texorpdfstring{Target/Dependent Variable
+\texttt{TARGET\_AMT}}{Target/Dependent Variable TARGET\_AMT}}\label{targetdependent-variable-target_amt}
+
+Target variable for the linear regression model represents the cost if a
+vehicle was involved in a crash. The value is presented only for
+observations with \texttt{TARGET\_FLAG} of 1. Distribution of
+\texttt{TARGET\_AMT} has a long right tail. There are no missing values.
+
+\begin{longtable}[]{@{}ccccccc@{}}
+\toprule
+\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+Min\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\centering\strut
+Median\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\centering\strut
+Mean\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\centering\strut
+SD\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+Max\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\centering\strut
+Num\_NAs\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+Num\_Zeros\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+30.28\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+4136\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+5586\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+7440\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+85524\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+0\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\includegraphics{Yohannes-HW4_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+\subsection{Modelling: Generalized Linear
+Model}\label{modelling-generalized-linear-model}
+
+The aim of this model is predicting whether a vehicle will be involved
+in a crash. The dependent variable, \texttt{TARGET\_FLAG}, is binary.
+For this project it is assumed that observations are independent of each
+other as there is no reason to believe otherwise.
+
+The main data set is split into training and testing data sets for the
+purpose of testing the accuracy of the model. The training set includes
+75\% of randomly chosen observations (4,531) while the testing set
+includes remaining 25\% (1,510).
+
+The starting point is a model that includes all independent variables.
+It has AIC value of 4085.5 and accuracy of 79.47\%. Summary is below.
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = TARGET_FLAG ~ . - TARGET_AMT, family = binomial(link = "logit"), 
+##     data = insTRAIN)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.2532  -0.7047  -0.3874   0.6212   2.9097  
+## 
+## Coefficients:
+##                        Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)          -3.057e-01  3.474e-01  -0.880 0.378824    
+## KIDSDRIV              3.254e-01  8.162e-02   3.987 6.70e-05 ***
+## AGE                  -6.524e-03  5.457e-03  -1.195 0.231914    
+## HOMEKIDS              1.095e-02  4.955e-02   0.221 0.825173    
+## YOJ                  -4.818e-03  1.137e-02  -0.424 0.671742    
+## INCOME               -3.061e-06  1.632e-06  -1.876 0.060660 .  
+## PARENT1Yes            3.940e-01  1.454e-01   2.709 0.006749 ** 
+## HOME_VAL             -1.383e-06  4.914e-07  -2.815 0.004879 ** 
+## MSTATUSNo             4.710e-01  1.165e-01   4.043 5.28e-05 ***
+## SEXF                 -1.745e-01  1.504e-01  -1.160 0.245995    
+## EDUCATIONHigh School -4.663e-02  1.224e-01  -0.381 0.703169    
+## EDUCATIONBachelors   -5.190e-01  1.524e-01  -3.405 0.000662 ***
+## EDUCATIONMasters     -6.353e-01  2.499e-01  -2.542 0.011006 *  
+## EDUCATIONPhD         -6.920e-02  3.049e-01  -0.227 0.820482    
+## JOBBlue Collar        9.702e-02  1.762e-01   0.551 0.581935    
+## JOBHome Maker        -8.012e-02  2.029e-01  -0.395 0.692862    
+## JOBClerical           2.432e-01  1.762e-01   1.380 0.167584    
+## JOBProfessional      -9.445e-03  2.109e-01  -0.045 0.964277    
+## JOBManager           -6.364e-01  2.306e-01  -2.760 0.005782 ** 
+## JOBLawyer             2.617e-01  2.815e-01   0.930 0.352593    
+## JOBDoctor            -5.717e-01  4.068e-01  -1.405 0.159912    
+## TRAVTIME              1.420e-02  2.536e-03   5.599 2.15e-08 ***
+## CAR_USEPrivate       -8.163e-01  1.224e-01  -6.669 2.57e-11 ***
+## BLUEBOOK             -2.233e-05  7.034e-06  -3.174 0.001503 ** 
+## TIF                  -5.337e-02  9.914e-03  -5.383 7.32e-08 ***
+## CAR_TYPEPanel Truck   6.422e-01  2.271e-01   2.827 0.004694 ** 
+## CAR_TYPEPickup        5.283e-01  1.322e-01   3.995 6.47e-05 ***
+## CAR_TYPESports Car    1.104e+00  1.696e-01   6.512 7.42e-11 ***
+## CAR_TYPEVan           4.579e-01  1.759e-01   2.603 0.009232 ** 
+## CAR_TYPESUV           7.862e-01  1.456e-01   5.398 6.74e-08 ***
+## RED_CARYes           -1.989e-01  1.199e-01  -1.658 0.097220 .  
+## OLDCLAIM             -1.796e-05  5.177e-06  -3.468 0.000524 ***
+## CLM_FREQ              2.075e-01  3.832e-02   5.416 6.10e-08 ***
+## REVOKEDYes            8.732e-01  1.218e-01   7.167 7.67e-13 ***
+## MVR_PTS               1.147e-01  1.851e-02   6.197 5.75e-10 ***
+## CAR_AGE               7.534e-04  1.030e-02   0.073 0.941712    
+## URBANICITYRural      -2.360e+00  1.463e-01 -16.129  < 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 5240.4  on 4530  degrees of freedom
+## Residual deviance: 4011.5  on 4494  degrees of freedom
+## AIC: 4085.5
+## 
+## Number of Fisher Scoring iterations: 5
+\end{verbatim}
+
+Running this model through the stepwise algorithm (\texttt{stepAIC} from
+the \texttt{MASS} package), removed \texttt{AGE}, \texttt{HOMEKIDS},
+\texttt{YOJ}, \texttt{SEX}, \texttt{RED\_CAR} and \texttt{CAR\_AGE}. AIC
+is reduced slightly to 4078.2 and accuracy is improved very slightly to
+79.54\%.
+
+\texttt{INCOME} and \texttt{HOME\_VAL} are very right-skewed. To make
+results more normal, they are log-transformed (adding 1 to make sure
+that log-transformation is possible for 0 values). The new model again
+has slightly lower AIC of 4073.2 and slightly higher accuracy at
+79.73\%.
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = TARGET_FLAG ~ KIDSDRIV + log(INCOME + 1) + PARENT1 + 
+##     log(HOME_VAL + 1) + MSTATUS + EDUCATION + JOB + TRAVTIME + 
+##     CAR_USE + BLUEBOOK + TIF + CAR_TYPE + OLDCLAIM + CLM_FREQ + 
+##     REVOKED + MVR_PTS + URBANICITY, family = binomial(link = "logit"), 
+##     data = insTRAIN)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.3062  -0.7025  -0.3932   0.6137   2.9590  
+## 
+## Coefficients:
+##                        Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)          -3.484e-01  2.494e-01  -1.397 0.162383    
+## KIDSDRIV              3.248e-01  7.318e-02   4.439 9.05e-06 ***
+## log(INCOME + 1)      -6.371e-02  1.901e-02  -3.351 0.000805 ***
+## PARENT1Yes            4.522e-01  1.255e-01   3.604 0.000313 ***
+## log(HOME_VAL + 1)    -3.312e-02  9.474e-03  -3.496 0.000473 ***
+## MSTATUSNo             3.924e-01  1.145e-01   3.426 0.000613 ***
+## EDUCATIONHigh School -5.933e-02  1.221e-01  -0.486 0.626878    
+## EDUCATIONBachelors   -5.946e-01  1.387e-01  -4.288 1.80e-05 ***
+## EDUCATIONMasters     -7.595e-01  2.179e-01  -3.485 0.000492 ***
+## EDUCATIONPhD         -3.272e-01  2.696e-01  -1.214 0.224811    
+## JOBBlue Collar        3.822e-01  2.018e-01   1.894 0.058233 .  
+## JOBHome Maker         6.055e-02  2.130e-01   0.284 0.776192    
+## JOBClerical           6.048e-01  2.050e-01   2.950 0.003175 ** 
+## JOBProfessional       2.447e-01  2.315e-01   1.057 0.290386    
+## JOBManager           -4.020e-01  2.480e-01  -1.621 0.105038    
+## JOBLawyer             5.227e-01  2.983e-01   1.752 0.079716 .  
+## JOBDoctor            -3.706e-01  4.133e-01  -0.897 0.369957    
+## TRAVTIME              1.422e-02  2.540e-03   5.599 2.16e-08 ***
+## CAR_USEPrivate       -8.122e-01  1.225e-01  -6.632 3.32e-11 ***
+## BLUEBOOK             -2.595e-05  6.304e-06  -4.116 3.85e-05 ***
+## TIF                  -5.211e-02  9.911e-03  -5.258 1.45e-07 ***
+## CAR_TYPEPanel Truck   6.821e-01  2.146e-01   3.179 0.001478 ** 
+## CAR_TYPEPickup        5.412e-01  1.321e-01   4.097 4.18e-05 ***
+## CAR_TYPESports Car    1.057e+00  1.392e-01   7.594 3.10e-14 ***
+## CAR_TYPEVan           4.567e-01  1.709e-01   2.673 0.007516 ** 
+## CAR_TYPESUV           7.558e-01  1.120e-01   6.750 1.48e-11 ***
+## OLDCLAIM             -1.792e-05  5.186e-06  -3.455 0.000551 ***
+## CLM_FREQ              2.081e-01  3.827e-02   5.439 5.37e-08 ***
+## REVOKEDYes            8.647e-01  1.219e-01   7.092 1.32e-12 ***
+## MVR_PTS               1.148e-01  1.853e-02   6.196 5.79e-10 ***
+## URBANICITYRural      -2.391e+00  1.471e-01 -16.254  < 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 5240.4  on 4530  degrees of freedom
+## Residual deviance: 4011.2  on 4500  degrees of freedom
+## AIC: 4073.2
+## 
+## Number of Fisher Scoring iterations: 5
+\end{verbatim}
+
+It is good to note that a potential issue was discovered with
+variance-inflation (using \texttt{vif} in the \texttt{car} package) by
+anlyzing the model using various evaluation methods.
+
+\begin{verbatim}
+##                        GVIF Df GVIF^(1/(2*Df))
+## KIDSDRIV           1.088467  1        1.043296
+## log(INCOME + 1)    2.530758  1        1.590836
+## PARENT1            1.427433  1        1.194752
+## log(HOME_VAL + 1)  1.965195  1        1.401854
+## MSTATUS            2.118875  1        1.455636
+## EDUCATION          7.054761  4        1.276616
+## JOB               29.531678  7        1.273563
+## TRAVTIME           1.034921  1        1.017311
+## CAR_USE            2.336829  1        1.528669
+## BLUEBOOK           1.575884  1        1.255342
+## TIF                1.010050  1        1.005012
+## CAR_TYPE           2.221595  5        1.083095
+## OLDCLAIM           1.679788  1        1.296066
+## CLM_FREQ           1.449881  1        1.204110
+## REVOKED            1.341382  1        1.158181
+## MVR_PTS            1.174200  1        1.083605
+## URBANICITY         1.142851  1        1.069042
+\end{verbatim}
+
+TThere is a possible correlation between \texttt{JOB} and
+\texttt{EDUCATION}
+
+\includegraphics{Yohannes-HW4_files/figure-latex/unnamed-chunk-22-1.pdf}
+
+\paragraph{Final Model}\label{final-model}
+
+We would like to provide the formula for the final generalized linear
+model to be
+\texttt{TARGET\_FLAG\ \textasciitilde{}\ KIDSDRIV\ +\ log(INCOME+1)\ +\ PARENT1\ +\ log(HOME\_VAL+1)\ +\ MSTATUS\ +\ EDUCATION\ +\ TRAVTIME\ +\ CAR\_USE\ +\ BLUEBOOK\ +\ TIF\ +\ CAR\_TYPE\ +\ OLDCLAIM\ +\ CLM\_FREQ\ +\ REVOKED\ +\ MVR\_PTS\ +\ URBANICITY}.
+AIC is 4107.
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = TARGET_FLAG ~ KIDSDRIV + log(INCOME + 1) + PARENT1 + 
+##     log(HOME_VAL + 1) + MSTATUS + EDUCATION + TRAVTIME + CAR_USE + 
+##     BLUEBOOK + TIF + CAR_TYPE + OLDCLAIM + CLM_FREQ + REVOKED + 
+##     MVR_PTS + URBANICITY, family = binomial(link = "logit"), 
+##     data = insTRAIN)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.3080  -0.7092  -0.4102   0.6195   2.9691  
+## 
+## Coefficients:
+##                        Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)          -2.012e-01  2.367e-01  -0.850 0.395436    
+## KIDSDRIV              3.163e-01  7.239e-02   4.369 1.25e-05 ***
+## log(INCOME + 1)      -4.046e-02  1.317e-02  -3.073 0.002119 ** 
+## PARENT1Yes            4.630e-01  1.241e-01   3.730 0.000192 ***
+## log(HOME_VAL + 1)    -2.605e-02  8.541e-03  -3.050 0.002291 ** 
+## MSTATUSNo             4.317e-01  1.092e-01   3.952 7.75e-05 ***
+## EDUCATIONHigh School -1.621e-01  1.183e-01  -1.371 0.170482    
+## EDUCATIONBachelors   -8.241e-01  1.235e-01  -6.673 2.50e-11 ***
+## EDUCATIONMasters     -8.845e-01  1.426e-01  -6.202 5.59e-10 ***
+## EDUCATIONPhD         -8.916e-01  1.931e-01  -4.617 3.89e-06 ***
+## TRAVTIME              1.438e-02  2.515e-03   5.717 1.09e-08 ***
+## CAR_USEPrivate       -8.525e-01  9.843e-02  -8.661  < 2e-16 ***
+## BLUEBOOK             -2.722e-05  6.234e-06  -4.367 1.26e-05 ***
+## TIF                  -5.137e-02  9.859e-03  -5.211 1.88e-07 ***
+## CAR_TYPEPanel Truck   5.620e-01  2.039e-01   2.757 0.005841 ** 
+## CAR_TYPEPickup        4.841e-01  1.287e-01   3.761 0.000169 ***
+## CAR_TYPESports Car    1.006e+00  1.371e-01   7.335 2.21e-13 ***
+## CAR_TYPEVan           4.125e-01  1.692e-01   2.438 0.014771 *  
+## CAR_TYPESUV           7.359e-01  1.106e-01   6.655 2.83e-11 ***
+## OLDCLAIM             -1.776e-05  5.131e-06  -3.461 0.000538 ***
+## CLM_FREQ              2.059e-01  3.794e-02   5.428 5.71e-08 ***
+## REVOKEDYes            8.704e-01  1.209e-01   7.199 6.07e-13 ***
+## MVR_PTS               1.218e-01  1.840e-02   6.618 3.64e-11 ***
+## URBANICITYRural      -2.332e+00  1.471e-01 -15.855  < 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 5240.4  on 4530  degrees of freedom
+## Residual deviance: 4059.0  on 4507  degrees of freedom
+## AIC: 4107
+## 
+## Number of Fisher Scoring iterations: 5
+\end{verbatim}
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+\begin{minipage}[b]{0.11\columnwidth}\centering\strut
+~\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{0}\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1046\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+64\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{1}\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+241\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\centering\strut
+159\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}cccccc@{}}
+\toprule
+\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+llh\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+llhNull\strut
+\end{minipage} & \begin{minipage}[b]{0.08\columnwidth}\centering\strut
+G2\strut
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\centering\strut
+McFadden\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\centering\strut
+r2ML\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\centering\strut
+r2CU\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+-2029\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+-2620\strut
+\end{minipage} & \begin{minipage}[t]{0.08\columnwidth}\centering\strut
+1181\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+0.2254\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+0.2295\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+0.3349\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+The accuracy level is 79.80\%. McFadden \(R^2\) is 0.2254. As we can see
+on the plot below the area under the curve is 0.8022.
+
+\includegraphics{Yohannes-HW4_files/figure-latex/unnamed-chunk-24-1.pdf}
+
+Please see below the results for K-fold cross validation using 10
+iterations. T
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction    0    1
+##          0 1046   64
+##          1  241  159
+##                                          
+##                Accuracy : 0.798          
+##                  95% CI : (0.7769, 0.818)
+##     No Information Rate : 0.8523         
+##     P-Value [Acc > NIR] : 1              
+##                                          
+##                   Kappa : 0.3959         
+##                                          
+##  Mcnemar's Test P-Value : <2e-16         
+##                                          
+##             Sensitivity : 0.8127         
+##             Specificity : 0.7130         
+##          Pos Pred Value : 0.9423         
+##          Neg Pred Value : 0.3975         
+##              Prevalence : 0.8523         
+##          Detection Rate : 0.6927         
+##    Detection Prevalence : 0.7351         
+##       Balanced Accuracy : 0.7629         
+##                                          
+##        'Positive' Class : 0              
+## 
+\end{verbatim}
+
+By utlizing \texttt{anova}we can analyze the deviance and observe that
+all terms are significant although significance for \texttt{MSTATUS} and
+\texttt{TRAVTIME} are less significant than all other terms.
+
+\begin{verbatim}
+## Analysis of Deviance Table
+## 
+## Model: binomial, link: logit
+## 
+## Response: TARGET_FLAG
+## 
+## Terms added sequentially (first to last)
+## 
+## 
+##                   Df Deviance Resid. Df Resid. Dev  Pr(>Chi)    
+## NULL                               4530     5240.4              
+## KIDSDRIV           1    31.64      4529     5208.8 1.860e-08 ***
+## log(INCOME + 1)    1    45.45      4528     5163.3 1.570e-11 ***
+## PARENT1            1    99.30      4527     5064.1 < 2.2e-16 ***
+## log(HOME_VAL + 1)  1    45.03      4526     5019.0 1.938e-11 ***
+## MSTATUS            1     3.56      4525     5015.5   0.05907 .  
+## EDUCATION          4    85.47      4521     4930.0 < 2.2e-16 ***
+## TRAVTIME           1     5.70      4520     4924.3   0.01697 *  
+## CAR_USE            1    81.67      4519     4842.6 < 2.2e-16 ***
+## BLUEBOOK           1    38.64      4518     4804.0 5.089e-10 ***
+## TIF                1    27.91      4517     4776.1 1.272e-07 ***
+## CAR_TYPE           5    67.15      4512     4708.9 4.014e-13 ***
+## OLDCLAIM           1    49.73      4511     4659.2 1.766e-12 ***
+## CLM_FREQ           1   109.12      4510     4550.1 < 2.2e-16 ***
+## REVOKED            1    61.82      4509     4488.2 3.762e-15 ***
+## MVR_PTS            1    69.84      4508     4418.4 < 2.2e-16 ***
+## URBANICITY         1   359.42      4507     4059.0 < 2.2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Variance inflation factors are low for all variables, so correlation is
+not high.
+
+\begin{verbatim}
+##                       GVIF Df GVIF^(1/(2*Df))
+## KIDSDRIV          1.082636  1        1.040498
+## log(INCOME + 1)   1.214555  1        1.102068
+## PARENT1           1.418362  1        1.190950
+## log(HOME_VAL + 1) 1.622557  1        1.273796
+## MSTATUS           1.954360  1        1.397984
+## EDUCATION         1.345798  4        1.037821
+## TRAVTIME          1.033747  1        1.016734
+## CAR_USE           1.527886  1        1.236077
+## BLUEBOOK          1.565014  1        1.251005
+## TIF               1.008322  1        1.004152
+## CAR_TYPE          1.935421  5        1.068261
+## OLDCLAIM          1.677986  1        1.295371
+## CLM_FREQ          1.449134  1        1.203800
+## REVOKED           1.339632  1        1.157425
+## MVR_PTS           1.171422  1        1.082322
+## URBANICITY        1.135802  1        1.065740
+\end{verbatim}
+
+\paragraph{Coefficient Analysis}\label{coefficient-analysis}
+
+Crash is more likely to occur due to the following varibales : - Higher
+number of DMV points - Higher number of children driving - Single
+parents and unmarried individuals - Higher commuting distance - License
+revocation within the past 7 years - Higher number of claims within the
+past 5 years - Commercial vehicle use is more likely to result in a
+crash than private. - Rural environment is less likely to result in a
+crash than urban. - Individuals who have been customers longer are less
+likely to have a crash. - Higher Blue Book value makes it less likely to
+result in a crash. - Education makes it less likely to result in a
+crash. - Higher income and home value make it less likely to result in a
+crash. - Car type is hard to evaluate, but generally various types make
+it more likely to have a crash (to different degrees). - Interestingly,
+larger previous payout make it less likely to result in a crash.
+
+\subsection{Modelling: Linear Model}\label{modelling-linear-model}
+
+Linear modelling is used to predict the amount of the payout in case of
+a crash (\texttt{TARGET\_AMT}). \textbf{Only observations where a crash
+has occurred (\texttt{TARGET\_FLAG}==1) are used in training the linear
+model.} If there is no crash, payout will not be needed. As such if
+observations without a crash are included in the model, they may skew
+the results.Isolating all observations with a reported crash, leaves
+1,601 observations.
+
+As mentioned above the data is divided into a training set (75\%; 1,200
+observations) and a testing set (25\%; 401 observations).
+
+We have managed to build 5 models and compare them :
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Model 1}: All independent variables.
+\item
+  \textbf{Model 2}: Model 1 optimized using stepwise algorithm. This
+  dropped all variables except \texttt{PARENT1}, \texttt{MSTATUS},
+  \texttt{BLUEBOOK}, \texttt{OLDCLAIM}, \texttt{CLM\_FREQ},
+  \texttt{REVOKED} and \texttt{JOB}.
+\item
+  \textbf{Model 3}: Some variables from model 2 dropping less signficant
+  ones. This model includes \texttt{BLUEBOOK}, \texttt{OLDCLAIM},
+  \texttt{CLM\_FREQ} and \texttt{REVOKED}.
+\item
+  \textbf{Model 4}: Variables that theoretically should have an effect:
+  \texttt{BLUEBOOK}, \texttt{CAR\_AGE}, \texttt{CAR\_TYPE}.
+\item
+  \textbf{Model 5}: Only \texttt{BLUEBOOK}. This variable seems the most
+  significant.
+\end{itemize}
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+\begin{minipage}[b]{0.13\columnwidth}\centering\strut
+Model\strut
+\end{minipage} & \begin{minipage}[b]{0.19\columnwidth}\centering\strut
+Adjusted R\^{}2\strut
+\end{minipage} & \begin{minipage}[b]{0.30\columnwidth}\centering\strut
+Root-Mean Square Error\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.13\columnwidth}\centering\strut
+Model 1\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering\strut
+0.01808\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\centering\strut
+8416\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\centering\strut
+Model 2\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering\strut
+0.02218\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\centering\strut
+8367\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\centering\strut
+Model 3\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering\strut
+0.01366\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\centering\strut
+8344\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\centering\strut
+Model 4\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering\strut
+0.01351\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\centering\strut
+8373\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\centering\strut
+Model 5\strut
+\end{minipage} & \begin{minipage}[t]{0.19\columnwidth}\centering\strut
+0.01202\strut
+\end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\centering\strut
+8336\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+Based on our observation we have decided to use model 5 due to the best
+RMSE value and its simplicity eventhough it had the worst adjusted
+\(R^2\). In the next section we will be focusing on model 5 for furher
+analysis.
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = TARGET_AMT ~ BLUEBOOK, data = insLMtrain)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+##  -7307  -2864  -1349    483  79170 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 4.041e+03  4.023e+02  10.044  < 2e-16 ***
+## BLUEBOOK    1.013e-01  2.566e-02   3.948 8.35e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 7063 on 1198 degrees of freedom
+## Multiple R-squared:  0.01284,    Adjusted R-squared:  0.01202 
+## F-statistic: 15.58 on 1 and 1198 DF,  p-value: 8.349e-05
+\end{verbatim}
+
+\ldots{}
+
+\includegraphics{Yohannes-HW4_files/figure-latex/unnamed-chunk-31-1.pdf}
+
+Consider Box-Cox transformation (plot below is generated using
+\texttt{boxcox} from the \texttt{MASS} package).
+
+\includegraphics{Yohannes-HW4_files/figure-latex/unnamed-chunk-32-1.pdf}
+
+if lambda is picked to be 0, then target variable should be
+log-transformed.
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = log(TARGET_AMT) ~ BLUEBOOK, data = insLMtrain)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.7770 -0.3877  0.0599  0.4177  3.0424 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 8.128e+00  4.592e-02 176.993  < 2e-16 ***
+## BLUEBOOK    8.166e-06  2.929e-06   2.788  0.00539 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.8062 on 1198 degrees of freedom
+## Multiple R-squared:  0.006446,   Adjusted R-squared:  0.005617 
+## F-statistic: 7.772 on 1 and 1198 DF,  p-value: 0.005389
+\end{verbatim}
+
+This drastically reduced already low adjusted \(R^2\). However, Q-Q plot
+is improved. I
+
+\includegraphics{Yohannes-HW4_files/figure-latex/unnamed-chunk-34-1.pdf}
+\includegraphics{Yohannes-HW4_files/figure-latex/unnamed-chunk-34-2.pdf}
+\includegraphics{Yohannes-HW4_files/figure-latex/unnamed-chunk-34-3.pdf}
+
+\paragraph{Robust/Quantile Regression}\label{robustquantile-regression}
+
+Looking at the scatterplot of \texttt{BLUEBOOK} vs
+\texttt{log(TARGET\_AMT)}, there is a lot of variance and a lot of
+outliers. It is possible that some points are leverage points that
+interfere with the model. Two additional model were built in an effort
+to account for that.
+
+The first model was created using robust regression (\texttt{rlm} in the
+\texttt{MASS} package). The second model was created using quantile
+regression (\texttt{rq} in the \texttt{quantreg} package).
+
+Original model has RMSE of 0.7815. RLM model very slightly improves it
+to 0.7811. Finally, RQ model also very slightly improves it to 0.7771.
+Fits for all three models are presented in the scatterplot below.
+
+\includegraphics{Yohannes-HW4_files/figure-latex/unnamed-chunk-35-1.pdf}
+
+\newpage
+
+\subsection{APPENDIX A: Evaluation Data
+Set}\label{appendix-a-evaluation-data-set}
+
+For the sake of clarfication we will be using the first 100 entries of
+the data; \texttt{insurance-evaluation-data.csv} file.
+
+Evalution data is missing some \texttt{INCOME} and \texttt{HOME\_EVAL}
+values that are used in the binary regression model. Rather than trying
+to impute those values by replacing them with 0 or mean or media values
+or by building a model to predict them, these values are left as they
+are and the model cannot be used to predict the outcome for
+corresponding observations.
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule
+\begin{minipage}[b]{0.10\columnwidth}\centering\strut
+Index\strut
+\end{minipage} & \begin{minipage}[b]{0.25\columnwidth}\centering\strut
+TARGET\_FLAG Prob.\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\centering\strut
+TARGET\_FLAG\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\centering\strut
+TARGET\_AMT\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1816\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+9\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.3604\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+10\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1493\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+18\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.2319\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+21\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.2756\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+30\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+NA\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+31\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.4432\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+37\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.4418\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+39\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0289\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+47\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1904\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+60\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0279\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+62\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.5549\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+3812\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+63\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+NA\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+64\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0792\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+68\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0261\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+75\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+NA\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+76\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.671\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+3429\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+83\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1779\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+87\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.5449\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+3651\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+92\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.3123\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+98\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1521\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+106\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.395\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+107\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0851\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+113\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.3603\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+120\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.2745\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+123\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.4411\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+125\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.4386\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+126\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.3961\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+128\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1665\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+129\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1554\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+131\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.221\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+135\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.3263\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+141\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.079\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+147\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1926\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+148\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1651\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+151\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0361\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+156\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1378\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+157\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1199\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+174\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0691\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+186\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.5531\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+3668\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+193\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.2295\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+195\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.5546\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+3831\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+212\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0136\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+213\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.5128\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+3920\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+217\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0041\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+223\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.2552\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+226\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1033\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+228\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.2615\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+230\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0138\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+241\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.5685\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+3610\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+243\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1487\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+249\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.3335\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+281\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.7619\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+3691\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+288\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1072\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+294\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+NA\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+295\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.2027\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+300\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.4442\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+302\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.3606\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+303\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1077\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+308\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.5506\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+3594\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+319\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0118\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+320\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0944\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+324\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.3479\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+331\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.2167\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+343\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0511\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+347\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.3246\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+348\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.8159\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+3531\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+350\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.568\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+3967\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+357\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1465\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+358\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.058\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+360\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+NA\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+366\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1974\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+367\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.7401\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+3580\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+368\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.2771\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+376\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.7287\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+3645\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+380\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.3893\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+388\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.3897\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+396\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.252\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+398\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1245\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+403\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0448\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+410\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.5654\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+3598\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+412\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.34\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+420\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.2981\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+434\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0345\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+440\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.4766\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+450\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.5612\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+3887\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+453\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.2757\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+464\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.2841\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+465\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0522\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+466\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+NA\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+473\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0847\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+476\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0903\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+478\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+NA\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+479\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.1898\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+493\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0347\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+497\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.2245\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+503\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.0068\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+504\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.3887\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+505\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.3087\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+507\strut
+\end{minipage} & \begin{minipage}[t]{0.25\columnwidth}\centering\strut
+0.2996\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\centering\strut
+NA\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\newpage
+
+\subsection{APPENDIX B: R Script based on the requirements of the
+project}\label{appendix-b-r-script-based-on-the-requirements-of-the-project}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Required libraries}
+\KeywordTok{library}\NormalTok{(knitr)}
+\KeywordTok{library}\NormalTok{(kableExtra)}
+\KeywordTok{library}\NormalTok{(gridExtra)}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\KeywordTok{library}\NormalTok{(dplyr)}
+\KeywordTok{library}\NormalTok{(caTools)}
+\KeywordTok{library}\NormalTok{(pscl)}
+\KeywordTok{library}\NormalTok{(ROCR)}
+\KeywordTok{library}\NormalTok{(MASS)}
+\KeywordTok{library}\NormalTok{(caret)}
+\KeywordTok{library}\NormalTok{(car)}
+\KeywordTok{library}\NormalTok{(Metrics)}
+\KeywordTok{library}\NormalTok{(quantreg)}
+
+\CommentTok{# Import data}
+\NormalTok{ins <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\KeywordTok{url}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/"}\NormalTok{,}
+                           \StringTok{"ilyakats/CUNY-DATA621/master/hw4/"}\NormalTok{,}
+                           \StringTok{"insurance_training_data.csv"}\NormalTok{)),}
+                \DataTypeTok{na.strings=}\KeywordTok{c}\NormalTok{(}\StringTok{""}\NormalTok{,}\StringTok{"NA"}\NormalTok{))}
+
+\CommentTok{# Basic statistic}
+\KeywordTok{nrow}\NormalTok{(ins); }\KeywordTok{ncol}\NormalTok{(ins)}
+\KeywordTok{summary}\NormalTok{(ins)}
+
+\CommentTok{# TARGET_FLAG - 6008 are 0, 2153 are 1}
+\KeywordTok{table}\NormalTok{(ins}\OperatorTok{$}\NormalTok{TARGET_FLAG)}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{TARGET_FLAG) }
+\CommentTok{# Integer (0/1)}
+
+\CommentTok{# TARGET_AMT}
+\KeywordTok{summary}\NormalTok{(ins[ins}\OperatorTok{$}\NormalTok{TARGET_FLAG}\OperatorTok{==}\DecValTok{0}\NormalTok{, }\StringTok{'TARGET_AMT'}\NormalTok{])}
+\KeywordTok{summary}\NormalTok{(ins[ins}\OperatorTok{$}\NormalTok{TARGET_FLAG}\OperatorTok{==}\DecValTok{1}\NormalTok{, }\StringTok{'TARGET_AMT'}\NormalTok{])}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{TARGET_AMT) }
+\CommentTok{# Only available for TARGET_FLAG=1}
+\CommentTok{# Numeric: Ranges from 30.28 to 107600}
+
+\CommentTok{# KIDSDRIV - No of Driving Children}
+\KeywordTok{table}\NormalTok{(ins}\OperatorTok{$}\NormalTok{KIDSDRIV)}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{KIDSDRIV)}
+\CommentTok{# Integer - Ranges from 0 to 4}
+
+\CommentTok{# AGE}
+\KeywordTok{summary}\NormalTok{(ins}\OperatorTok{$}\NormalTok{AGE)}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{AGE)}
+\CommentTok{# Integer - Ranges from 16 to 81}
+\CommentTok{# 6 NAs}
+
+\CommentTok{# HOMEKIDS}
+\KeywordTok{table}\NormalTok{(ins}\OperatorTok{$}\NormalTok{HOMEKIDS)}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{HOMEKIDS)}
+\CommentTok{# Integer - Ranges from 0 to 5}
+
+\CommentTok{# YOJ - Years on Job}
+\KeywordTok{summary}\NormalTok{(ins}\OperatorTok{$}\NormalTok{YOJ)}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{YOJ)}
+\CommentTok{# Integer - Ranges from 0 to 23}
+\CommentTok{# 454 NAs - 5.56% of observations}
+
+\CommentTok{# INCOME}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{INCOME)}
+\KeywordTok{summary}\NormalTok{(ins}\OperatorTok{$}\NormalTok{INCOME)}
+\CommentTok{# Convert to Numeric - Ranges from $0 to $367,000}
+\CommentTok{# 445 NAs - 5.45% of observations}
+
+\CommentTok{# PARENT1 - Single Parent?}
+\KeywordTok{table}\NormalTok{(ins}\OperatorTok{$}\NormalTok{PARENT1)}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{PARENT1); }\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{PARENT1)}
+\CommentTok{# Factor - No, Yes}
+
+\CommentTok{# HOME_VAL - Home Value}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{HOME_VAL)}
+\KeywordTok{summary}\NormalTok{(ins}\OperatorTok{$}\NormalTok{HOME_VAL)}
+\CommentTok{# Converted to Numeric - Ranges from $0 to $885,300}
+\CommentTok{# 464 NAs - 5.69% of observations}
+
+\CommentTok{# MSTATUS}
+\KeywordTok{table}\NormalTok{(ins}\OperatorTok{$}\NormalTok{MSTATUS)}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{MSTATUS); }\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{MSTATUS)}
+\CommentTok{# Factor - Yes, No}
+
+\CommentTok{# SEX}
+\KeywordTok{table}\NormalTok{(ins}\OperatorTok{$}\NormalTok{SEX)}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{SEX); }\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{SEX)}
+\CommentTok{# Factor - M, F}
+
+\CommentTok{# EDUCATION}
+\KeywordTok{table}\NormalTok{(ins}\OperatorTok{$}\NormalTok{EDUCATION)}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{EDUCATION); }\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{EDUCATION)}
+\CommentTok{# Factor - <HS, HS, BA, MA, PhD}
+
+\CommentTok{# JOB}
+\KeywordTok{table}\NormalTok{(ins}\OperatorTok{$}\NormalTok{JOB)}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{JOB); }\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{JOB)}
+\CommentTok{# Factor - [Blank], Clerical, Doctor, Home Maker, Lawyer, Manager, }
+\CommentTok{# Professional, Student, Blue Collar}
+
+\CommentTok{# TRAVTIME - Distance to work}
+\KeywordTok{summary}\NormalTok{(ins}\OperatorTok{$}\NormalTok{TRAVTIME)}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{TRAVTIME)}
+\CommentTok{# Integer - Ranges from 5 to 142}
+
+\CommentTok{# CAR_USE}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{CAR_USE); }\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{CAR_USE)}
+\KeywordTok{table}\NormalTok{(ins}\OperatorTok{$}\NormalTok{CAR_USE)}
+\CommentTok{# Factor - Commercial, Private}
+
+\CommentTok{# BLUEBOOK}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{BLUEBOOK)}
+\KeywordTok{summary}\NormalTok{(ins}\OperatorTok{$}\NormalTok{BLUEBOOK)}
+\CommentTok{# Numeric - Ranges from $1,500 to $69,740}
+
+\CommentTok{# TIF - Time in Force}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{TIF)}
+\KeywordTok{summary}\NormalTok{(ins}\OperatorTok{$}\NormalTok{TIF)}
+\CommentTok{# Integer - Ranges from 1 to 25}
+
+\CommentTok{# CAR_TYPE}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{CAR_TYPE); }\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{CAR_TYPE)}
+\KeywordTok{table}\NormalTok{(ins}\OperatorTok{$}\NormalTok{CAR_TYPE)}
+\CommentTok{# FActor - Minivan, Panel Truck, Pickup, Sports Car, Van, SUV}
+
+\CommentTok{# RED_CAR}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{RED_CAR); }\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{RED_CAR)}
+\KeywordTok{table}\NormalTok{(ins}\OperatorTok{$}\NormalTok{RED_CAR)}
+\CommentTok{# Factor - No, Yes}
+
+\CommentTok{# OLDCLAIM}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{OLDCLAIM)}
+\KeywordTok{summary}\NormalTok{(ins}\OperatorTok{$}\NormalTok{OLDCLAIM)}
+\CommentTok{# Numeric - Ranges from $0 to $57,040}
+
+\CommentTok{# CLM_FREQ}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{CLM_FREQ)}
+\KeywordTok{summary}\NormalTok{(ins}\OperatorTok{$}\NormalTok{CLM_FREQ)}
+\CommentTok{# Integer - Ranges from 0 to 5}
+
+\CommentTok{# REVOKED}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{REVOKED); }\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{REVOKED)}
+\KeywordTok{table}\NormalTok{(ins}\OperatorTok{$}\NormalTok{REVOKED)}
+\CommentTok{# Factor - No, Yes}
+
+\CommentTok{# MVR_PTS}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{MVR_PTS)}
+\KeywordTok{summary}\NormalTok{(ins}\OperatorTok{$}\NormalTok{MVR_PTS)}
+\CommentTok{# Integer - Ranges from 0 to 13}
+
+\CommentTok{# CAR_AGE}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{CAR_AGE)}
+\KeywordTok{summary}\NormalTok{(ins}\OperatorTok{$}\NormalTok{CAR_AGE)}
+\KeywordTok{nrow}\NormalTok{(ins[ins}\OperatorTok{$}\NormalTok{CAR_AGE}\OperatorTok{<}\DecValTok{0} \OperatorTok{&}\StringTok{ }\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(ins}\OperatorTok{$}\NormalTok{CAR_AGE), ])}
+\KeywordTok{nrow}\NormalTok{(ins[ins}\OperatorTok{$}\NormalTok{CAR_AGE}\OperatorTok{==}\DecValTok{0} \OperatorTok{&}\StringTok{ }\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(ins}\OperatorTok{$}\NormalTok{CAR_AGE), ])}
+\KeywordTok{nrow}\NormalTok{(ins[ins}\OperatorTok{$}\NormalTok{CAR_AGE}\OperatorTok{==}\DecValTok{1} \OperatorTok{&}\StringTok{ }\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(ins}\OperatorTok{$}\NormalTok{CAR_AGE), ])}
+\CommentTok{# Integer - Ranges from -3 to 28}
+\CommentTok{# 1 observation of -3 - invalid}
+\CommentTok{# 3 observations of 0 - likely invalid}
+\CommentTok{# 1,934 observations of 1 - reasonable (new car)}
+\CommentTok{# 510 NAs - 6.25% of observations}
+
+\CommentTok{# URBANICITY}
+\KeywordTok{class}\NormalTok{(ins}\OperatorTok{$}\NormalTok{URBANICITY); }\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{URBANICITY)}
+\KeywordTok{table}\NormalTok{(ins}\OperatorTok{$}\NormalTok{URBANICITY)}
+\CommentTok{# Factor - Urban, Rural}
+
+\NormalTok{ins}\OperatorTok{$}\NormalTok{INCOME <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{gsub}\NormalTok{(}\StringTok{'[$,]'}\NormalTok{, }\StringTok{''}\NormalTok{, ins}\OperatorTok{$}\NormalTok{INCOME))}
+\NormalTok{ins}\OperatorTok{$}\NormalTok{HOME_VAL <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{gsub}\NormalTok{(}\StringTok{'[$,]'}\NormalTok{, }\StringTok{''}\NormalTok{, ins}\OperatorTok{$}\NormalTok{HOME_VAL))}
+\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{MSTATUS)[}\KeywordTok{match}\NormalTok{(}\StringTok{"z_No"}\NormalTok{,}\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{MSTATUS))] <-}\StringTok{ "No"}
+\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{SEX)[}\KeywordTok{match}\NormalTok{(}\StringTok{"z_F"}\NormalTok{,}\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{SEX))] <-}\StringTok{ "F"}
+\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{EDUCATION)[}\KeywordTok{match}\NormalTok{(}\StringTok{"z_High School"}\NormalTok{,}
+                            \KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{EDUCATION))] <-}\StringTok{ "High School"}
+\NormalTok{ins}\OperatorTok{$}\NormalTok{EDUCATION <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(ins}\OperatorTok{$}\NormalTok{EDUCATION,}\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{EDUCATION)[}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{2}\OperatorTok{:}\DecValTok{4}\NormalTok{)])}
+\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{JOB)[}\KeywordTok{match}\NormalTok{(}\StringTok{"z_Blue Collar"}\NormalTok{,}\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{JOB))] <-}\StringTok{ "Blue Collar"}
+\NormalTok{ins}\OperatorTok{$}\NormalTok{BLUEBOOK <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{gsub}\NormalTok{(}\StringTok{'[$,]'}\NormalTok{, }\StringTok{''}\NormalTok{, ins}\OperatorTok{$}\NormalTok{BLUEBOOK))}
+\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{CAR_TYPE)[}\KeywordTok{match}\NormalTok{(}\StringTok{"z_SUV"}\NormalTok{,}\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{CAR_TYPE))] <-}\StringTok{ "SUV"}
+\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{RED_CAR)[}\KeywordTok{match}\NormalTok{(}\StringTok{"no"}\NormalTok{,}\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{RED_CAR))] <-}\StringTok{ "No"}
+\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{RED_CAR)[}\KeywordTok{match}\NormalTok{(}\StringTok{"yes"}\NormalTok{,}\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{RED_CAR))] <-}\StringTok{ "Yes"}
+\NormalTok{ins}\OperatorTok{$}\NormalTok{OLDCLAIM <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{gsub}\NormalTok{(}\StringTok{'[$,]'}\NormalTok{, }\StringTok{''}\NormalTok{, ins}\OperatorTok{$}\NormalTok{OLDCLAIM))}
+\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{URBANICITY)[}\KeywordTok{match}\NormalTok{(}\StringTok{"Highly Urban/ Urban"}\NormalTok{,}
+                             \KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{URBANICITY))] <-}\StringTok{ "Urban"}
+\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{URBANICITY)[}\KeywordTok{match}\NormalTok{(}\StringTok{"z_Highly Rural/ Rural"}\NormalTok{,}
+                             \KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{URBANICITY))] <-}\StringTok{ "Rural"}
+\NormalTok{ins}\OperatorTok{$}\NormalTok{JOB <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(ins}\OperatorTok{$}\NormalTok{JOB,}\KeywordTok{levels}\NormalTok{(ins}\OperatorTok{$}\NormalTok{JOB)[}\KeywordTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{)])}
+
+\CommentTok{# Drop index column}
+\NormalTok{ins <-}\StringTok{ }\NormalTok{ins[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{)]}
+
+\NormalTok{insFull <-}\StringTok{ }\NormalTok{ins}
+
+\NormalTok{ins <-}\StringTok{ }\NormalTok{ins[}\KeywordTok{complete.cases}\NormalTok{(ins), ]}
+\NormalTok{ins[ins}\OperatorTok{$}\NormalTok{CAR_AGE}\OperatorTok{<}\DecValTok{1}\NormalTok{,}\StringTok{'CAR_AGE'}\NormalTok{] <-}\StringTok{ }\OtherTok{NA}
+\NormalTok{ins <-}\StringTok{ }\NormalTok{ins[}\KeywordTok{complete.cases}\NormalTok{(ins), ]}
+\CommentTok{# Cuts down from 8,161 to 6,045}
+
+\CommentTok{# Get only complete cases}
+\KeywordTok{nrow}\NormalTok{(ins[}\KeywordTok{complete.cases}\NormalTok{(ins), ])}
+\KeywordTok{nrow}\NormalTok{(ins)}
+
+\NormalTok{insBackup <-}\StringTok{ }\NormalTok{ins}
+
+\CommentTok{# Summary table}
+\NormalTok{sumIns =}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{Variable =} \KeywordTok{character}\NormalTok{(),}
+                    \DataTypeTok{Min =} \KeywordTok{integer}\NormalTok{(),}
+                    \DataTypeTok{Median =} \KeywordTok{integer}\NormalTok{(),}
+                    \DataTypeTok{Mean =} \KeywordTok{double}\NormalTok{(),}
+                    \DataTypeTok{SD =} \KeywordTok{double}\NormalTok{(),}
+                    \DataTypeTok{Max =} \KeywordTok{integer}\NormalTok{(),}
+                    \DataTypeTok{Num_NAs =} \KeywordTok{integer}\NormalTok{(),}
+                    \DataTypeTok{Num_Zeros =} \KeywordTok{integer}\NormalTok{())}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\OperatorTok{:}\DecValTok{7}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{14}\NormalTok{,}\DecValTok{16}\NormalTok{,}\DecValTok{17}\NormalTok{,}\DecValTok{20}\NormalTok{,}\DecValTok{21}\NormalTok{,}\DecValTok{23}\NormalTok{,}\DecValTok{24}\NormalTok{)) \{}
+\NormalTok{  sumIns <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(sumIns, }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{Variable =} \KeywordTok{colnames}\NormalTok{(ins)[i],}
+                                     \DataTypeTok{Min =} \KeywordTok{min}\NormalTok{(ins[,i], }\DataTypeTok{na.rm=}\OtherTok{TRUE}\NormalTok{),}
+                                     \DataTypeTok{Median =} \KeywordTok{median}\NormalTok{(ins[,i], }\DataTypeTok{na.rm=}\OtherTok{TRUE}\NormalTok{),}
+                                     \DataTypeTok{Mean =} \KeywordTok{mean}\NormalTok{(ins[,i], }\DataTypeTok{na.rm=}\OtherTok{TRUE}\NormalTok{),}
+                                     \DataTypeTok{SD =} \KeywordTok{sd}\NormalTok{(ins[,i], }\DataTypeTok{na.rm=}\OtherTok{TRUE}\NormalTok{),}
+                                     \DataTypeTok{Max =} \KeywordTok{max}\NormalTok{(ins[,i], }\DataTypeTok{na.rm=}\OtherTok{TRUE}\NormalTok{),}
+                                     \DataTypeTok{Num_NAs =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(ins[,i])),}
+                                     \DataTypeTok{Num_Zeros =} \KeywordTok{length}\NormalTok{(}\KeywordTok{which}\NormalTok{(ins[,i]}\OperatorTok{==}\DecValTok{0}\NormalTok{)))}
+\NormalTok{  )}
+\NormalTok{\}}
+\KeywordTok{colnames}\NormalTok{(sumIns) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{""}\NormalTok{, }\StringTok{"Min"}\NormalTok{, }\StringTok{"Median"}\NormalTok{, }\StringTok{"Mean"}\NormalTok{, }\StringTok{"SD"}\NormalTok{, }\StringTok{"Max"}\NormalTok{, }\StringTok{"Num of NAs"}\NormalTok{, }
+                      \StringTok{"Num of Zeros"}\NormalTok{)}
+\NormalTok{sumIns}
+
+\CommentTok{# Proportion of target variable}
+\KeywordTok{table}\NormalTok{(ins}\OperatorTok{$}\NormalTok{TARGET_FLAG)}
+\KeywordTok{table}\NormalTok{(ins}\OperatorTok{$}\NormalTok{TARGET_FLAG)}\OperatorTok{/}\KeywordTok{sum}\NormalTok{(}\KeywordTok{table}\NormalTok{(ins}\OperatorTok{$}\NormalTok{TARGET_FLAG))}
+
+\CommentTok{# Exploratory plots (repeated for each variable)}
+\CommentTok{# Get descriptive plots:}
+\CommentTok{# Variables: }
+\CommentTok{# INDEX, TARGET_FLAG, TARGET_AMT, KIDSDRIV, AGE, HOMEKIDS, YOJ, INCOME, }
+\CommentTok{# PARENT1, HOME_VAL, MSTATUS, SEX, EDUCATION, JOB, TRAVTIME, CAR_USE, }
+\CommentTok{# BLUEBOOK, TIF, CAR_TYPE, RED_CAR, OLDCLAIM, CLM_FREQ, REVOKED, MVR_PTS, }
+\CommentTok{# CAR_AGE, URBANICITY, }
+\NormalTok{v <-}\StringTok{ "TARGET_AMT"} \CommentTok{# Variable to view}
+\NormalTok{pd <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(}\KeywordTok{cbind}\NormalTok{(ins[, v], ins}\OperatorTok{$}\NormalTok{TARGET_FLAG))}
+\KeywordTok{colnames}\NormalTok{(pd) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"X"}\NormalTok{, }\StringTok{"Y"}\NormalTok{)}
+
+\CommentTok{# Boxplot}
+\NormalTok{bp <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(pd, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ X)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{stat_boxplot}\NormalTok{(}\DataTypeTok{geom =}\StringTok{'errorbar'}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_boxplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Boxplot"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\StringTok{""}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x=}\KeywordTok{element_blank}\NormalTok{(), }
+                                     \DataTypeTok{axis.ticks.x=}\KeywordTok{element_blank}\NormalTok{())}
+
+\CommentTok{# Density plot}
+\NormalTok{hp <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(pd, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ X)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y=}\NormalTok{..density..), }\DataTypeTok{colour=}\StringTok{"black"}\NormalTok{, }\DataTypeTok{fill=}\StringTok{"white"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_density}\NormalTok{(}\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{2}\NormalTok{, }\DataTypeTok{fill=}\StringTok{"#FF6666"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{""}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Density Plot with Mean"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_vline}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{xintercept=}\KeywordTok{mean}\NormalTok{(X, }\DataTypeTok{na.rm=}\OtherTok{TRUE}\NormalTok{)), }\DataTypeTok{color=}\StringTok{"red"}\NormalTok{, }
+             \DataTypeTok{linetype=}\StringTok{"dashed"}\NormalTok{, }\DataTypeTok{size=}\DecValTok{1}\NormalTok{)}
+
+\CommentTok{# Scatterplot}
+\NormalTok{sp <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(pd, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{X, }\DataTypeTok{y=}\NormalTok{Y)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{   }
+\StringTok{  }\KeywordTok{stat_smooth}\NormalTok{(}\DataTypeTok{method=}\StringTok{"glm"}\NormalTok{, }\DataTypeTok{method.args=}\KeywordTok{list}\NormalTok{(}\DataTypeTok{family=}\StringTok{"binomial"}\NormalTok{), }\DataTypeTok{se=}\OtherTok{FALSE}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Scatterplot with Logistic Regression Line"}\NormalTok{)}
+
+\KeywordTok{grid.arrange}\NormalTok{(bp, hp, sp, }\DataTypeTok{layout_matrix=}\KeywordTok{rbind}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{),}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{)))}
+
+\CommentTok{# Correlation matrix}
+\NormalTok{cm <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(ins, }\DataTypeTok{use=}\StringTok{"pairwise.complete.obs"}\NormalTok{)}
+\NormalTok{cm <-}\StringTok{ }\KeywordTok{round}\NormalTok{(cm, }\DecValTok{2}\NormalTok{)}
+\NormalTok{cmout <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(cm) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate_all}\NormalTok{(}\ControlFlowTok{function}\NormalTok{(x) \{}
+  \KeywordTok{cell_spec}\NormalTok{(x, }\StringTok{"html"}\NormalTok{, }\DataTypeTok{color =} \KeywordTok{ifelse}\NormalTok{(x}\OperatorTok{>}\FloatTok{0.5} \OperatorTok{|}\StringTok{ }\NormalTok{x}\OperatorTok{<}\NormalTok{(}\OperatorTok{-}\FloatTok{0.5}\NormalTok{),}\StringTok{"blue"}\NormalTok{,}\StringTok{"black"}\NormalTok{))}
+\NormalTok{  \})}
+\KeywordTok{rownames}\NormalTok{(cmout) <-}\StringTok{ }\KeywordTok{colnames}\NormalTok{(cmout)}
+\NormalTok{cmout }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{kable}\NormalTok{(}\StringTok{"html"}\NormalTok{, }\DataTypeTok{escape =}\NormalTok{ F, }\DataTypeTok{align =} \StringTok{"c"}\NormalTok{, }\DataTypeTok{row.names =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{kable_styling}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\DataTypeTok{full_width =}\NormalTok{ F)}
+
+\KeywordTok{pairs}\NormalTok{(ins)}
+
+\CommentTok{# Split into train and validation sets}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{88}\NormalTok{)}
+\NormalTok{split <-}\StringTok{ }\KeywordTok{sample.split}\NormalTok{(ins}\OperatorTok{$}\NormalTok{TARGET_FLAG, }\DataTypeTok{SplitRatio =} \FloatTok{0.75}\NormalTok{)}
+\NormalTok{insTRAIN <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(ins, split }\OperatorTok{==}\StringTok{ }\OtherTok{TRUE}\NormalTok{)}
+\NormalTok{insTEST <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(ins, split }\OperatorTok{==}\StringTok{ }\OtherTok{FALSE}\NormalTok{)}
+
+\CommentTok{# BINARY REGRESSION MODEL}
+
+\CommentTok{# Modelling - Basic model}
+\NormalTok{model <-}\StringTok{ }\KeywordTok{glm}\NormalTok{ (TARGET_FLAG }\OperatorTok{~}\StringTok{ }\NormalTok{.}\OperatorTok{-}\NormalTok{TARGET_AMT, }\DataTypeTok{data =}\NormalTok{ insTRAIN, }
+              \DataTypeTok{family =} \KeywordTok{binomial}\NormalTok{(}\DataTypeTok{link=}\StringTok{"logit"}\NormalTok{))}
+\KeywordTok{summary}\NormalTok{(model)}
+\NormalTok{pred <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(model, }\DataTypeTok{newdata=}\KeywordTok{subset}\NormalTok{(insTEST, }\DataTypeTok{select=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{25}\NormalTok{)), }
+                \DataTypeTok{type=}\StringTok{'response'}\NormalTok{)}
+\NormalTok{cm <-}\StringTok{ }\KeywordTok{confusionMatrix}\NormalTok{(}\KeywordTok{as.factor}\NormalTok{(insTEST}\OperatorTok{$}\NormalTok{TARGET_FLAG), }
+                      \KeywordTok{as.factor}\NormalTok{(}\KeywordTok{ifelse}\NormalTok{(pred }\OperatorTok{>}\StringTok{ }\FloatTok{0.5}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{)))}
+\NormalTok{cm}\OperatorTok{$}\NormalTok{table}
+\NormalTok{cm}\OperatorTok{$}\NormalTok{overall[}\StringTok{'Accuracy'}\NormalTok{]}
+\KeywordTok{pR2}\NormalTok{(model) }\CommentTok{# McFadden R^2}
+
+\CommentTok{# Stepwise approach}
+\NormalTok{model <-}\StringTok{ }\KeywordTok{stepAIC}\NormalTok{(model, }\DataTypeTok{trace=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{direction=}\StringTok{'both'}\NormalTok{)}
+
+\CommentTok{# Model tweaking}
+\NormalTok{model <-}\StringTok{ }\KeywordTok{glm}\NormalTok{(}\DataTypeTok{formula =}\NormalTok{ TARGET_FLAG }\OperatorTok{~}\StringTok{ }\NormalTok{KIDSDRIV }\OperatorTok{+}\StringTok{ }\KeywordTok{log}\NormalTok{(INCOME}\OperatorTok{+}\DecValTok{1}\NormalTok{) }\OperatorTok{+}\StringTok{ }\NormalTok{PARENT1 }\OperatorTok{+}\StringTok{ }
+\StringTok{               }\KeywordTok{log}\NormalTok{(HOME_VAL}\OperatorTok{+}\DecValTok{1}\NormalTok{) }\OperatorTok{+}\StringTok{ }\NormalTok{MSTATUS }\OperatorTok{+}\StringTok{ }\NormalTok{EDUCATION }\OperatorTok{+}\StringTok{ }\NormalTok{JOB }\OperatorTok{+}\StringTok{ }\NormalTok{TRAVTIME }\OperatorTok{+}\StringTok{ }
+\StringTok{               }\NormalTok{CAR_USE }\OperatorTok{+}\StringTok{ }\NormalTok{BLUEBOOK }\OperatorTok{+}\StringTok{ }\NormalTok{TIF }\OperatorTok{+}\StringTok{ }\NormalTok{CAR_TYPE }\OperatorTok{+}\StringTok{ }\NormalTok{OLDCLAIM }\OperatorTok{+}\StringTok{ }\NormalTok{CLM_FREQ }\OperatorTok{+}\StringTok{ }
+\StringTok{               }\NormalTok{REVOKED }\OperatorTok{+}\StringTok{ }\NormalTok{MVR_PTS }\OperatorTok{+}\StringTok{ }\NormalTok{URBANICITY, }
+             \DataTypeTok{family =} \KeywordTok{binomial}\NormalTok{(}\DataTypeTok{link =} \StringTok{"logit"}\NormalTok{), }\DataTypeTok{data =}\NormalTok{ insTRAIN)}
+
+\CommentTok{# ROC}
+\NormalTok{pr <-}\StringTok{ }\KeywordTok{prediction}\NormalTok{(pred, insTEST}\OperatorTok{$}\NormalTok{TARGET_FLAG)}
+\NormalTok{prf <-}\StringTok{ }\KeywordTok{performance}\NormalTok{(pr, }\DataTypeTok{measure =} \StringTok{"tpr"}\NormalTok{, }\DataTypeTok{x.measure =} \StringTok{"fpr"}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(prf, }\DataTypeTok{colorize =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{text.adj =} \KeywordTok{c}\NormalTok{(}\OperatorTok{-}\FloatTok{0.2}\NormalTok{,}\FloatTok{1.7}\NormalTok{))}
+\NormalTok{auc <-}\StringTok{ }\KeywordTok{performance}\NormalTok{(pr, }\DataTypeTok{measure =} \StringTok{"auc"}\NormalTok{)}
+\NormalTok{(auc <-}\StringTok{ }\NormalTok{auc}\OperatorTok{@}\NormalTok{y.values[[}\DecValTok{1}\NormalTok{]])}
+
+\CommentTok{# K-Fold cross validation}
+\NormalTok{ctrl <-}\StringTok{ }\KeywordTok{trainControl}\NormalTok{(}\DataTypeTok{method =} \StringTok{"repeatedcv"}\NormalTok{, }\DataTypeTok{number =} \DecValTok{10}\NormalTok{, }
+                     \DataTypeTok{savePredictions =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{model_fit <-}\StringTok{ }\KeywordTok{train}\NormalTok{(TARGET_FLAG }\OperatorTok{~}\StringTok{ }\NormalTok{KIDSDRIV }\OperatorTok{+}\StringTok{ }\KeywordTok{log}\NormalTok{(INCOME}\OperatorTok{+}\DecValTok{1}\NormalTok{) }\OperatorTok{+}\StringTok{ }\NormalTok{PARENT1 }\OperatorTok{+}\StringTok{ }
+\StringTok{                     }\KeywordTok{log}\NormalTok{(HOME_VAL}\OperatorTok{+}\DecValTok{1}\NormalTok{) }\OperatorTok{+}\StringTok{ }\NormalTok{MSTATUS }\OperatorTok{+}\StringTok{ }\NormalTok{EDUCATION }\OperatorTok{+}\StringTok{ }\NormalTok{TRAVTIME }\OperatorTok{+}\StringTok{ }
+\StringTok{                     }\NormalTok{CAR_USE }\OperatorTok{+}\StringTok{ }\NormalTok{BLUEBOOK }\OperatorTok{+}\StringTok{ }\NormalTok{TIF }\OperatorTok{+}\StringTok{ }\NormalTok{CAR_TYPE }\OperatorTok{+}\StringTok{ }\NormalTok{OLDCLAIM }\OperatorTok{+}\StringTok{ }
+\StringTok{                     }\NormalTok{CLM_FREQ }\OperatorTok{+}\StringTok{ }\NormalTok{REVOKED }\OperatorTok{+}\StringTok{ }\NormalTok{MVR_PTS }\OperatorTok{+}\StringTok{ }\NormalTok{URBANICITY,  }
+                   \DataTypeTok{data=}\NormalTok{insTRAIN, }\DataTypeTok{method=}\StringTok{"glm"}\NormalTok{, }\DataTypeTok{family=}\StringTok{"binomial"}\NormalTok{,}
+                   \DataTypeTok{trControl =}\NormalTok{ ctrl, }\DataTypeTok{tuneLength =} \DecValTok{5}\NormalTok{)}
+\NormalTok{pred <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(model_fit, }\DataTypeTok{newdata=}\NormalTok{insTEST)}
+\KeywordTok{confusionMatrix}\NormalTok{(}\KeywordTok{as.factor}\NormalTok{(insTEST}\OperatorTok{$}\NormalTok{TARGET_FLAG),}
+                \KeywordTok{as.factor}\NormalTok{(}\KeywordTok{ifelse}\NormalTok{(pred }\OperatorTok{>}\StringTok{ }\FloatTok{0.5}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{)))}
+
+\CommentTok{# Deviance residuals}
+\KeywordTok{anova}\NormalTok{(model, }\DataTypeTok{test=}\StringTok{"Chisq"}\NormalTok{)}
+
+\CommentTok{# VIF}
+\KeywordTok{vif}\NormalTok{(model)}
+\CommentTok{# Take out JOB }
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ ins, }\KeywordTok{aes}\NormalTok{(JOB, EDUCATION)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{()}
+\NormalTok{model <-}\StringTok{ }\KeywordTok{glm}\NormalTok{(}\DataTypeTok{formula =}\NormalTok{ TARGET_FLAG }\OperatorTok{~}\StringTok{ }\NormalTok{KIDSDRIV }\OperatorTok{+}\StringTok{ }\KeywordTok{log}\NormalTok{(INCOME}\OperatorTok{+}\DecValTok{1}\NormalTok{) }\OperatorTok{+}\StringTok{ }\NormalTok{PARENT1 }\OperatorTok{+}\StringTok{ }
+\StringTok{               }\KeywordTok{log}\NormalTok{(HOME_VAL}\OperatorTok{+}\DecValTok{1}\NormalTok{) }\OperatorTok{+}\StringTok{ }\NormalTok{MSTATUS }\OperatorTok{+}\StringTok{ }\NormalTok{EDUCATION }\OperatorTok{+}\StringTok{ }\NormalTok{TRAVTIME }\OperatorTok{+}\StringTok{ }\NormalTok{CAR_USE }\OperatorTok{+}\StringTok{ }
+\StringTok{               }\NormalTok{BLUEBOOK }\OperatorTok{+}\StringTok{ }\NormalTok{TIF }\OperatorTok{+}\StringTok{ }\NormalTok{CAR_TYPE }\OperatorTok{+}\StringTok{ }\NormalTok{OLDCLAIM }\OperatorTok{+}\StringTok{ }\NormalTok{CLM_FREQ }\OperatorTok{+}\StringTok{ }\NormalTok{REVOKED }\OperatorTok{+}\StringTok{ }
+\StringTok{               }\NormalTok{MVR_PTS }\OperatorTok{+}\StringTok{ }\NormalTok{URBANICITY, }
+             \DataTypeTok{family =} \KeywordTok{binomial}\NormalTok{(}\DataTypeTok{link =} \StringTok{"logit"}\NormalTok{), }\DataTypeTok{data =}\NormalTok{ insTRAIN)}
+
+\CommentTok{# LINEAR MODEL}
+
+\NormalTok{insLM <-}\StringTok{ }\NormalTok{ins}
+\NormalTok{insLM <-}\StringTok{ }\NormalTok{ins[ins}\OperatorTok{$}\NormalTok{TARGET_FLAG}\OperatorTok{==}\DecValTok{1}\NormalTok{,]}
+
+\CommentTok{# Split into training and testing sets}
+\NormalTok{split <-}\StringTok{ }\KeywordTok{sample.split}\NormalTok{(insLM}\OperatorTok{$}\NormalTok{TARGET_AMT, }\DataTypeTok{SplitRatio =} \FloatTok{0.75}\NormalTok{)}
+\NormalTok{insLMtrain <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(insLM, split }\OperatorTok{==}\StringTok{ }\OtherTok{TRUE}\NormalTok{)}
+\NormalTok{insLMtest <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(insLM, split }\OperatorTok{==}\StringTok{ }\OtherTok{FALSE}\NormalTok{)}
+
+\CommentTok{# Initial models}
+\NormalTok{lmModel <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(TARGET_AMT }\OperatorTok{~}\StringTok{ }\NormalTok{.}\OperatorTok{-}\NormalTok{TARGET_FLAG,}\DataTypeTok{data =}\NormalTok{ insLMtrain)}
+\KeywordTok{summary}\NormalTok{(lmModel)}
+\NormalTok{lmModel <-}\StringTok{ }\KeywordTok{stepAIC}\NormalTok{(lmModel, }\DataTypeTok{trace=}\OtherTok{FALSE}\NormalTok{, }\DataTypeTok{direction=}\StringTok{'both'}\NormalTok{)}
+\KeywordTok{summary}\NormalTok{(lmModel)}
+\NormalTok{lmModel <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(TARGET_AMT }\OperatorTok{~}\StringTok{ }\NormalTok{PARENT1 }\OperatorTok{+}\StringTok{ }\NormalTok{MSTATUS }\OperatorTok{+}\StringTok{ }\NormalTok{BLUEBOOK }\OperatorTok{+}\StringTok{ }\NormalTok{OLDCLAIM }\OperatorTok{+}\StringTok{ }
+\StringTok{                }\NormalTok{CLM_FREQ }\OperatorTok{+}\StringTok{ }\NormalTok{REVOKED }\OperatorTok{+}\StringTok{ }\NormalTok{JOB,}\DataTypeTok{data =}\NormalTok{ insLMtrain)}
+\KeywordTok{summary}\NormalTok{(lmModel)}
+\NormalTok{lmModel <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(TARGET_AMT }\OperatorTok{~}\StringTok{ }\NormalTok{BLUEBOOK }\OperatorTok{+}\StringTok{ }\NormalTok{OLDCLAIM }\OperatorTok{+}\StringTok{ }\NormalTok{CLM_FREQ }\OperatorTok{+}\StringTok{ }\NormalTok{REVOKED,}
+              \DataTypeTok{data =}\NormalTok{ insLMtrain)}
+\KeywordTok{summary}\NormalTok{(lmModel)}
+\NormalTok{lmModel <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(TARGET_AMT }\OperatorTok{~}\StringTok{ }\NormalTok{BLUEBOOK }\OperatorTok{+}\StringTok{ }\NormalTok{CAR_AGE }\OperatorTok{+}\StringTok{ }\NormalTok{CAR_TYPE,}\DataTypeTok{data =}\NormalTok{ insLMtrain)}
+\KeywordTok{summary}\NormalTok{(lmModel)}
+\NormalTok{lmModel <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(TARGET_AMT }\OperatorTok{~}\StringTok{ }\NormalTok{BLUEBOOK,}\DataTypeTok{data =}\NormalTok{ insLMtrain)}
+\KeywordTok{summary}\NormalTok{(lmModel)}
+
+\CommentTok{# Calculate RMSE}
+\NormalTok{pred <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(lmModel, }\DataTypeTok{newdata=}\NormalTok{insLMtest)}
+\KeywordTok{rmse}\NormalTok{(insLMtest}\OperatorTok{$}\NormalTok{TARGET_AMT, pred)}
+
+\CommentTok{# Model plots}
+\KeywordTok{plot}\NormalTok{(lmModel}\OperatorTok{$}\NormalTok{residuals, }\DataTypeTok{ylab=}\StringTok{"Residuals"}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h=}\DecValTok{0}\NormalTok{)}
+
+\KeywordTok{plot}\NormalTok{(lmModel}\OperatorTok{$}\NormalTok{fitted.values, lmModel}\OperatorTok{$}\NormalTok{residuals, }
+     \DataTypeTok{xlab=}\StringTok{"Fitted Values"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Residuals"}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h=}\DecValTok{0}\NormalTok{)}
+
+\KeywordTok{qqnorm}\NormalTok{(lmModel}\OperatorTok{$}\NormalTok{residuals)}
+\KeywordTok{qqline}\NormalTok{(lmModel}\OperatorTok{$}\NormalTok{residuals)}
+
+\KeywordTok{boxcox}\NormalTok{(lmModel)}
+
+\NormalTok{lmModel <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(}\KeywordTok{log}\NormalTok{(TARGET_AMT) }\OperatorTok{~}\StringTok{ }\NormalTok{BLUEBOOK, }\DataTypeTok{data =}\NormalTok{ insLMtrain)}
+\KeywordTok{summary}\NormalTok{(lmModel)}
+\NormalTok{pred <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(lmModel, }\DataTypeTok{newdata=}\NormalTok{insLMtest)}
+\KeywordTok{rmse}\NormalTok{(}\KeywordTok{log}\NormalTok{(insLMtest}\OperatorTok{$}\NormalTok{TARGET_AMT), pred)}
+\NormalTok{lmModel2 <-}\StringTok{ }\KeywordTok{rlm}\NormalTok{(}\KeywordTok{log}\NormalTok{(TARGET_AMT) }\OperatorTok{~}\StringTok{ }\NormalTok{BLUEBOOK, }\DataTypeTok{data =}\NormalTok{ insLMtrain)}
+\KeywordTok{summary}\NormalTok{(lmModel2)}
+\NormalTok{pred <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(lmModel2, }\DataTypeTok{newdata=}\NormalTok{insLMtest)}
+\KeywordTok{rmse}\NormalTok{(}\KeywordTok{log}\NormalTok{(insLMtest}\OperatorTok{$}\NormalTok{TARGET_AMT), pred)}
+\NormalTok{lmModel3 <-}\StringTok{ }\KeywordTok{rq}\NormalTok{(}\KeywordTok{log}\NormalTok{(TARGET_AMT) }\OperatorTok{~}\StringTok{ }\NormalTok{BLUEBOOK, }\DataTypeTok{data =}\NormalTok{ insLMtrain)}
+\KeywordTok{summary}\NormalTok{(lmModel3)}
+\NormalTok{pred <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(lmModel3, }\DataTypeTok{newdata=}\NormalTok{insLMtest)}
+\KeywordTok{rmse}\NormalTok{(}\KeywordTok{log}\NormalTok{(insLMtest}\OperatorTok{$}\NormalTok{TARGET_AMT), pred)}
+
+
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{log}\NormalTok{(TARGET_AMT) }\OperatorTok{~}\StringTok{ }\NormalTok{BLUEBOOK, }\DataTypeTok{data =}\NormalTok{ insLMtrain)}
+\KeywordTok{abline}\NormalTok{(lmModel)}
+\KeywordTok{abline}\NormalTok{(lmModel2, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(lmModel3, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{)}
+\KeywordTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\DataTypeTok{inset=}\FloatTok{0.05}\NormalTok{, }\DataTypeTok{bty=}\StringTok{"n"}\NormalTok{,}
+       \DataTypeTok{legend=}\KeywordTok{c}\NormalTok{(}\StringTok{"lm fit"}\NormalTok{, }\StringTok{"rlm fit"}\NormalTok{, }\StringTok{"rq fit"}\NormalTok{),}
+       \DataTypeTok{lty=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{),}
+       \DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{, }\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{))}
+
+\CommentTok{# Prediction}
+\NormalTok{eval <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\KeywordTok{url}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/"}\NormalTok{,}
+                            \StringTok{"ilyakats/CUNY-DATA621/master/hw4/"}\NormalTok{,}
+                            \StringTok{"insurance-evaluation-data.csv"}\NormalTok{)),}
+                 \DataTypeTok{na.strings=}\KeywordTok{c}\NormalTok{(}\StringTok{""}\NormalTok{,}\StringTok{"NA"}\NormalTok{))}
+\NormalTok{results <-}\StringTok{ }\NormalTok{eval[,}\DecValTok{1}\NormalTok{]}
+\NormalTok{eval}\OperatorTok{$}\NormalTok{INCOME <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{gsub}\NormalTok{(}\StringTok{'[$,]'}\NormalTok{, }\StringTok{''}\NormalTok{, eval}\OperatorTok{$}\NormalTok{INCOME))}
+\NormalTok{eval}\OperatorTok{$}\NormalTok{HOME_VAL <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{gsub}\NormalTok{(}\StringTok{'[$,]'}\NormalTok{, }\StringTok{''}\NormalTok{, eval}\OperatorTok{$}\NormalTok{HOME_VAL))}
+\KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{MSTATUS)[}\KeywordTok{match}\NormalTok{(}\StringTok{"z_No"}\NormalTok{,}\KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{MSTATUS))] <-}\StringTok{ "No"}
+\KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{SEX)[}\KeywordTok{match}\NormalTok{(}\StringTok{"z_F"}\NormalTok{,}\KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{SEX))] <-}\StringTok{ "F"}
+\KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{EDUCATION)[}\KeywordTok{match}\NormalTok{(}\StringTok{"z_High School"}\NormalTok{,}
+                             \KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{EDUCATION))] <-}\StringTok{ "High School"}
+\NormalTok{eval}\OperatorTok{$}\NormalTok{EDUCATION <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(eval}\OperatorTok{$}\NormalTok{EDUCATION,}\KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{EDUCATION)[}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{2}\OperatorTok{:}\DecValTok{4}\NormalTok{)])}
+\KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{JOB)[}\KeywordTok{match}\NormalTok{(}\StringTok{"z_Blue Collar"}\NormalTok{,}\KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{JOB))] <-}\StringTok{ "Blue Collar"}
+\NormalTok{eval}\OperatorTok{$}\NormalTok{BLUEBOOK <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{gsub}\NormalTok{(}\StringTok{'[$,]'}\NormalTok{, }\StringTok{''}\NormalTok{, eval}\OperatorTok{$}\NormalTok{BLUEBOOK))}
+\KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{CAR_TYPE)[}\KeywordTok{match}\NormalTok{(}\StringTok{"z_SUV"}\NormalTok{,}\KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{CAR_TYPE))] <-}\StringTok{ "SUV"}
+\KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{RED_CAR)[}\KeywordTok{match}\NormalTok{(}\StringTok{"no"}\NormalTok{,}\KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{RED_CAR))] <-}\StringTok{ "No"}
+\KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{RED_CAR)[}\KeywordTok{match}\NormalTok{(}\StringTok{"yes"}\NormalTok{,}\KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{RED_CAR))] <-}\StringTok{ "Yes"}
+\NormalTok{eval}\OperatorTok{$}\NormalTok{OLDCLAIM <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{gsub}\NormalTok{(}\StringTok{'[$,]'}\NormalTok{, }\StringTok{''}\NormalTok{, eval}\OperatorTok{$}\NormalTok{OLDCLAIM))}
+\KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{URBANICITY)[}\KeywordTok{match}\NormalTok{(}\StringTok{"Highly Urban/ Urban"}\NormalTok{,}
+                              \KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{URBANICITY))] <-}\StringTok{ "Urban"}
+\KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{URBANICITY)[}\KeywordTok{match}\NormalTok{(}\StringTok{"z_Highly Rural/ Rural"}\NormalTok{,}
+                              \KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{URBANICITY))] <-}\StringTok{ "Rural"}
+\NormalTok{eval}\OperatorTok{$}\NormalTok{JOB <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(eval}\OperatorTok{$}\NormalTok{JOB,}\KeywordTok{levels}\NormalTok{(eval}\OperatorTok{$}\NormalTok{JOB)[}\KeywordTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{)])}
+\NormalTok{eval <-}\StringTok{ }\NormalTok{eval[}\OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{)]}
+
+\NormalTok{pred <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(model, }\DataTypeTok{newdata=}\NormalTok{eval, }\DataTypeTok{type=}\StringTok{"response"}\NormalTok{)}
+\NormalTok{results <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{(results, }\DataTypeTok{prob=}\KeywordTok{round}\NormalTok{(pred,}\DecValTok{4}\NormalTok{))}
+\NormalTok{results <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{(results, }\DataTypeTok{predict=}\KeywordTok{round}\NormalTok{(pred,}\DecValTok{0}\NormalTok{))}
+
+\NormalTok{pred <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(lmModel, }\DataTypeTok{newdata=}\NormalTok{eval, }\DataTypeTok{type=}\StringTok{"response"}\NormalTok{)}
+\NormalTok{results <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{(results, }\KeywordTok{exp}\NormalTok{(pred))}
+\NormalTok{results <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(results)}
+
+\NormalTok{results[results}\OperatorTok{$}\NormalTok{predict}\OperatorTok{==}\DecValTok{0} \OperatorTok{&}\StringTok{ }\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(results}\OperatorTok{$}\NormalTok{predict),}\StringTok{'V4'}\NormalTok{] <-}\StringTok{ }\OtherTok{NA}
+\NormalTok{results[}\KeywordTok{is.na}\NormalTok{(results}\OperatorTok{$}\NormalTok{predict),}\StringTok{'V4'}\NormalTok{] <-}\StringTok{ }\OtherTok{NA}
+\KeywordTok{colnames}\NormalTok{(results) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Index"}\NormalTok{, }\StringTok{"TARGET_FLAG Prob."}\NormalTok{, }
+                       \StringTok{"TARGET_FLAG"}\NormalTok{, }\StringTok{"TARGET_AMT"}\NormalTok{)}
+\KeywordTok{pander}\NormalTok{(}\KeywordTok{head}\NormalTok{(results, }\DecValTok{100}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}
